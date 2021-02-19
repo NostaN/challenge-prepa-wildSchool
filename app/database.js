@@ -5,7 +5,9 @@ const {Sequelize} = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     dialectOptions: {
-        ssl: true
+        ssl: {
+            rejectUnauthorized: false
+        }
     },
     define: {
         underscored: true, // pour passer en snake_case par défaut
