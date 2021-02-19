@@ -5,6 +5,7 @@ const router = express.Router();
 /** CRUD List */
 router.get('/list', listController.getAll);
 router.get('/list/:id', listController.getOne);
+router.post('/list', listController.create);
 
 /** MW 404, toujours en dernier */
 router.use((req, res) => {

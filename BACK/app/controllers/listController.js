@@ -39,7 +39,19 @@ const listController = {
                 "hint": error.original.hint
             });
         }
-    }
+    },
+
+    create: async (req, res, next) => {
+        try {
+            const newArgonaute = await List.create(req.body);
+            res.json(newArgonaute);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({
+                "error": error.message,
+            });
+        }
+    },
 }
 
 module.exports = listController;
