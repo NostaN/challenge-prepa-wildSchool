@@ -4,7 +4,9 @@ const {Sequelize} = require('sequelize');
 // on instancie cette classe, avec des options
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
     define: {
-        ssl: true,
+        ssl: {
+            rejectUnauthorized: false
+        },
         underscored: true, // pour passer en snake_case par défaut
         // pour changer le nom des timestamps dans les models :
         createAt: "created_at",
