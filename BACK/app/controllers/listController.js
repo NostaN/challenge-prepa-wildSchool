@@ -71,7 +71,6 @@ const listController = {
             }
 
         } catch (error) {
-            // ici quelque chose s'est mal passé...
             console.error(error);
             res.status(500).json( {
                 "error": error.message
