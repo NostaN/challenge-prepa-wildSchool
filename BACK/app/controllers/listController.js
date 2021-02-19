@@ -52,6 +52,32 @@ const listController = {
             });
         }
     },
+
+    deleteOne: async (req, res, next) => {
+        try {
+            // nbDestroyed = l'id de l'argonaute qui est delete
+            const nbDestroyed = await List.destroy({
+                where: {
+                    id: req.params.id
+                }
+            });
+
+            if (nbDestroyed === 0) {
+                // si on a rien supprimé, c'est qu'on a pas trouvé l'argonaute correspondant => 404
+                next();
+            } else {
+                // si au moins un argonaute a été supprimé, on renvoie un petit message de vaidation
+                res.json({message: "l'argonaute a bien été supprimé"});
+            }
+
+        } catch (error) {
+            // ici quelque chose s'est mal passé...
+            console.error(error);
+            res.status(500).json( {
+                "error": error.message
+            });
+        }
+    },
 }
 
 module.exports = listController;
