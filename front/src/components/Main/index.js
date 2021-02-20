@@ -10,8 +10,8 @@ const Main = ({argonautesList}) => (
     <h2>Ajouter un(e) Argonaute</h2>
     <form className="new-member-form">
         <label htmlFor="name">Nom de l&apos;Argonaute</label>
-        <input id="name" name="name" type="text" placeholder="Charalampos" />
-        <button type="submit">Envoyer</button>
+        <input className="new-member-form-input" id="name" name="name" type="text" placeholder="Charalampos" />
+        <button className="new-member-form-button" type="submit">Envoyer</button>
     </form>
     
     <h2>Membres de l'équipage</h2>
