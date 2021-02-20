@@ -15,7 +15,11 @@ app.use(router);
 
 // J'autorise n'importe quel site à se connecter à mon API
 // ce n'est pas safe ! Ce sera à changer dès que ma partie front sera en ligne
-app.use(cors('http://localhost:3000','*'));
+app.use(cors({
+    origin: '*',
+    methods: ('Allow', 'GET,POST,PATCH,DELETE,OPTIONS'),
+    allowedHeaders: ('Access-Control-Allow-Origin', '*')
+}));
 
 // Port d'écoute
 const PORT = process.env.PORT || 3000;
