@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const router = require('./app/router');
+const cors = require('cors');
 
 // Création de notre application express
 const app = express();
