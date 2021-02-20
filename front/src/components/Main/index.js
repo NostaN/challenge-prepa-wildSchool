@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Import style
 import './style.scss';
 
-const Main = () => (
+const Main = ({argonautesList}) => (
     <main>
 
     <h2>Ajouter un(e) Argonaute</h2>
@@ -15,11 +16,22 @@ const Main = () => (
     
     <h2>Membres de l'équipage</h2>
     <section className="member-list">
-        <div className="member-item">Eleftheria</div>
-        <div className="member-item">Gennadios</div>
-        <div className="member-item">Lysimachos</div>
+        {argonautesList.map((argonaute) => (
+        <ul>
+            <li key={argonaute.id} className="member-item">{argonaute.name}</li>
+        </ul>
+        ))}
     </section>
     </main>
 );
+
+Main.propTypes = {
+    argonautesList: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+        })
+    ).isRequired
+};
 
 export default Main;
