@@ -16,13 +16,25 @@ const Main = () => {
     // pour générer nos datas au chargement avec un appel à l'API par axios
     useEffect(() => {
         // lorsque j'appelle axios.get, je récupere une promesse
-        // const promise = axios.get('Access-Control-Allow-Origin', 'https://wildschool-challenge-argonaute.herokuapp.com/list');
-        const promise = axios({
-            method: 'get',
-            url: 'https://wildschool-challenge-argonaute.herokuapp.com/list',
-            ContentType:'application/x-www-form-urlencoded'
-          })
+        // 'Access-Control-Allow-Origin'
+        // const config = {
+        //     method: 'get',
+        //     url: 'https://wildschool-challenge-argonaute.herokuapp.com/list',
+        //     headers: {
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //         'Access-Control-Allow-Origin': '*'
+        //     },
+        //     withCredentials: true
+        // };
+        // axios(config)
+        // const promise = axios({
+        //     baseURL: 'https://wildschool-challenge-argonaute.herokuapp.com/list',
+        //     method: 'get',
+        //     url: 'https://wildschool-challenge-argonaute.herokuapp.com/list',
+        //     ContentType:'application/x-www-form-urlencoded'
+        //   })
         // sur cette promesse, je peux m'abonner avec then
+        const promise = axios.get('https://wildschool-challenge-argonaute.herokuapp.com/list');
         promise
             .then((response) => { // .then = tout s'est bien passé
             // je stocke les argonautes renvoyés dans mon state
