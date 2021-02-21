@@ -15,9 +15,8 @@ const Main = () => {
     // le paramètre de useState est la valeur par défaut que l'on souhaite donner
     const [argonautesList, setArgonautesList] = useState([]);
 
-    // Utilisation d'un hook d'effet (équivalent de componentDidMount)
-    // pour générer nos datas au chargement avec un appel à l'API par axios
-    useEffect(() => {
+    // Déclaration de ma requête pour récupérer la liste des Argonautes
+    const getAllArgonautes = (() => {
         // lorsque j'appelle axios.get, je récupere une promesse
         const promise = axios.get('https://wildschool-challenge-argonaute.herokuapp.com/list');
         // sur cette promesse, je peux m'abonner avec then
@@ -32,14 +31,22 @@ const Main = () => {
                 console.error(error);
             })
             // .finally(() => {} // Je pourrais utiliser finally pour mettre du code qui sera toujours éxécuter après la requête
-    }, []);
+    })
 
+    // Utilisation d'un hook d'effet (équivalent de componentDidMount)
+    // pour générer nos datas au chargement avec un appel à l'API par axios
+    useEffect(() => {
+        getAllArgonautes();
+    }, []);
 
     return(
     <main>
 
     <h2>Ajouter un(e) Argonaute</h2>
-        <Form argonautesList={argonautesList} />
+        <Form
+        argonautesList={argonautesList}
+        getAllArgonautes={getAllArgonautes}
+        />
     <h2>Membres de l'équipage</h2>
     <section className="member-list">
         {argonautesList.map((argonaute) => (
