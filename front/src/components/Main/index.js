@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+// Import components
+import Form from './Form';
+
 // Import style
 import './style.scss';
 
@@ -36,12 +39,7 @@ const Main = () => {
     <main>
 
     <h2>Ajouter un(e) Argonaute</h2>
-    <form className="new-member-form">
-        <label htmlFor="name">Nom de l&apos;Argonaute</label>
-        <input className="new-member-form-input" id="name" name="name" type="text" placeholder="Charalampos" />
-        <button className="new-member-form-button" type="submit">Envoyer</button>
-    </form>
-    
+        <Form argonautesList={argonautesList} />
     <h2>Membres de l'équipage</h2>
     <section className="member-list">
         {argonautesList.map((argonaute) => (
