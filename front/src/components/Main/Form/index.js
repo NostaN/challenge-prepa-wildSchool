@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import FormData from 'form-data';
 import qs from 'qs';
 import PropTypes from 'prop-types';
 
 // Import style
 import './style.scss';
 
-const Form = ({ onSubmit, getAllArgonautes }) => {
+const Form = ({ getAllArgonautes }) => {
     const handleSubmit = (event) => {
         // on empêche le rechargement de la page
         event.preventDefault();
-        // on appel la prop onSubmit
         // handleSubmit va nous permettre de déclencher notre requête post avec axios
         addNameToArgonautesList(name);
+        // J'en profite pour vider le champ de l'input
+        setName('');
     }
 
-    // eslint-disable-next-line no-unused-vars
-    const [argonautesList, setArgonautesList] = useState([]);
-
     const addNameToArgonautesList = (name) => {
-        // const form = new FormData();
-        // form.append('name', name);
+        // On se sert du package qs pour mettre les datas du body de notre requête
+        // dans la forme désirée
         const data = qs.stringify({ 'name': name })
         const config = {
             method: 'post',
@@ -36,10 +33,7 @@ const Form = ({ onSubmit, getAllArgonautes }) => {
      .then((response) => {
     // response = réponse HTTP complete (config, options, header,...)
     // response.data = le corps (JSON) de notre réponse
-    // setArgonautesList : on modifie la case argonautesList dans notre state.
-      //setRepos(response.data.items);
       console.log(response.data);
-      setArgonautesList(response.data);
       getAllArgonautes();
     })
     .catch((error) => {

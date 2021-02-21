@@ -4,6 +4,10 @@ import axios from 'axios';
 
 // Import components
 import Form from './Form';
+import PopUp from './PopUp';
+
+// Import Utils
+// import getArgonauteSelected from '../../utils/getArgonauteSelected';
 
 // Import style
 import './style.scss';
@@ -14,6 +18,17 @@ const Main = () => {
     // setArgonautesList est la fonction qui nous permettra de modifier sa valeur
     // le paramètre de useState est la valeur par défaut que l'on souhaite donner
     const [argonautesList, setArgonautesList] = useState([]);
+    // Déclaration d'un booleen pour montrer une popup de confirmation
+    // si l'utilisateur clique sur un nom, afin de le rétirer de la liste
+    const [popUp, setPopUp] = useState(false);
+    const displayPopUp = (argonauteSelectedName) => {
+        setPopUp(!popUp);
+        setArgonauteSelectedName(argonauteSelectedName)
+    };
+
+    // j'utilise useState pour récupérer le name l'argonaute au click
+    const [argonauteSelectedName, setArgonauteSelectedName] = useState([]);
+
 
     // Déclaration de ma requête pour récupérer la liste des Argonautes
     const getAllArgonautes = (() => {
@@ -41,20 +56,39 @@ const Main = () => {
 
     return(
     <main>
-
     <h2>Ajouter un(e) Argonaute</h2>
         <Form
+        setArgonautesList={setArgonautesList}
         argonautesList={argonautesList}
         getAllArgonautes={getAllArgonautes}
         />
     <h2>Membres de l'équipage</h2>
+
     <section className="member-list">
         {argonautesList.map((argonaute) => (
         <ul key={argonaute.id}>
-            <li className="member-item">{argonaute.name}</li>
+            <li
+            type="button"
+            onClick={(event) => displayPopUp(event.target.textContent)}
+            // ici j'ouvre la popUp et je récupère le nom de l'argonaute au click
+            className="member-item"
+            >
+            {argonaute.name}
+            </li>
         </ul>
         ))}
     </section>
+    {popUp === true
+        && <PopUp
+        // argonauteSelectedId={argonauteSelected.id}
+        popUp={popUp}
+        setPopUp={setPopUp}
+        displayPopUp={displayPopUp}
+        getAllArgonautes={getAllArgonautes}
+        setArgonautesList={setArgonautesList}
+        argonauteSelectedName={argonauteSelectedName}
+        argonautesList={argonautesList}
+        />}
     </main>
     );
 }
