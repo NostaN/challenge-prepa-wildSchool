@@ -21,6 +21,7 @@ label {
     font-size: 1.5em;
     // Ajout du display flex pour disposer les noms de l'équipage comme je le veux
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 

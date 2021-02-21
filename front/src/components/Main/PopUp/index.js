@@ -24,7 +24,6 @@ const PopUp = ({
               'Content-Type': 'application/x-www-form-urlencoded',
             },
           };
-    console.log(config);
     axios(config)
      .then((response) => {
       console.log(response.data);

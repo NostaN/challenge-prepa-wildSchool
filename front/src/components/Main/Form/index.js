@@ -28,7 +28,6 @@ const Form = ({ getAllArgonautes }) => {
               'Content-Type': 'application/x-www-form-urlencoded',
             },
           };
-    console.log(config);
     axios(config)
      .then((response) => {
     // response = réponse HTTP complete (config, options, header,...)
