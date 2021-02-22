@@ -12,6 +12,8 @@ label {
     padding: 0.25em 0;
     list-style-type: none;
     cursor: pointer;
+    width: 11em;
+    text-align: center;
 }
 
 // Mon code :
@@ -22,6 +24,6 @@ label {
     // Ajout du display flex pour disposer les noms de l'équipage comme je le veux
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
