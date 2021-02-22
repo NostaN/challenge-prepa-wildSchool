@@ -1,0 +1,29 @@
+main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+  
+.member-item {
+    padding: 0.25em 0;
+    list-style-type: none;
+    cursor: pointer;
+    width: 11em;
+    text-align: center;
+}
+
+// Mon code :
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+.member-list {
+    font-family: 'Hanalei Fill', cursive, 'Roboto', sans-serif;
+    font-size: 1.5em;
+    // Ajout du display flex pour disposer les noms de l'équipage comme je le veux
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
